@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: SA
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+convention:
+  error-code:
+    i18n:
+      locale: zh_CN

@@ -1,0 +1,12 @@
+convention:
+  snowflake-id:
+    initial-timestamp: 0
+    worker-id: 0
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&connectTimeout=3000&socketTimeout=3000&useSSL=false
+    username: root
+    password: a123
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
