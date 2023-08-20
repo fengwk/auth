@@ -6,6 +6,8 @@ import fun.fengwk.convention4j.common.IntBool;
 import fun.fengwk.convention4j.common.NullSafe;
 import fun.fengwk.convention4j.common.gson.GsonUtils;
 import fun.fengwk.convention4j.common.reflect.TypeToken;
+import fun.fengwk.convention4j.springboot.starter.cache.annotation.Key;
+import fun.fengwk.convention4j.springboot.starter.cache.mapper.BaseCacheDO;
 import lombok.Data;
 
 import java.util.List;
@@ -14,10 +16,10 @@ import java.util.List;
  * @author fengwk
  */
 @Data
-public class ClientDO {
+public class ClientDO extends BaseCacheDO<Long> {
 
-    private Long id;
     private Integer deleted = IntBool.FALSE;
+    @Key
     private String name;
     private String description;
     private String secret;

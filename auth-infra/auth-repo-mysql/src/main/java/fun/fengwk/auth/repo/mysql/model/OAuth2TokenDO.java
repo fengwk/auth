@@ -3,6 +3,8 @@ package fun.fengwk.auth.repo.mysql.model;
 import fun.fengwk.auth.core.model.OAuth2TokenBO;
 import fun.fengwk.auth.share.constant.TokenType;
 import fun.fengwk.convention4j.common.NullSafe;
+import fun.fengwk.convention4j.springboot.starter.cache.annotation.Key;
+import fun.fengwk.convention4j.springboot.starter.cache.mapper.BaseCacheDO;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -11,14 +13,15 @@ import java.time.LocalDateTime;
  * @author fengwk
  */
 @Data
-public class OAuth2TokenDO {
+public class OAuth2TokenDO extends BaseCacheDO<Long> {
 
-    private Long id;
     private Long clientId;
     private String subjectId;
     private String scope;
     private String tokenType;
+    @Key
     private String accessToken;
+    @Key
     private String refreshToken;
     private LocalDateTime lastRefreshTime;
     private LocalDateTime authorizationTime;

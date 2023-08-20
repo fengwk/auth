@@ -47,7 +47,9 @@ public class ClientBO {
     private static void setByPropertiesDTO(ClientBO clientBO, BaseClientPropertiesDTO propertiesDTO) {
         clientBO.setName(propertiesDTO.getName());
         clientBO.setDescription(propertiesDTO.getDescription());
-        clientBO.setSecret(propertiesDTO.getSecret());
+        if (StringUtils.isNotEmpty(propertiesDTO.getSecret())) {
+            clientBO.setSecret(propertiesDTO.getSecret());
+        }
         clientBO.setOauth2Modes(NullSafe.map(propertiesDTO.getOauth2Modes(), OAuth2Mode::of));
         clientBO.setRedirectUris(NullSafe.of(propertiesDTO.getRedirectUris()));
         clientBO.setAuthenticationServer(propertiesDTO.getAuthenticationServer());

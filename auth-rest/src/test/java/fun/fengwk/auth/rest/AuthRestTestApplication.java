@@ -11,10 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableTestRedisServer
 @EnableTestSnowflakeId
 @SpringBootApplication
-public class AuthIfaceRestTestApplication {
+public class AuthRestTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthIfaceRestTestApplication.class, args);
+        SpringApplication.run(AuthRestTestApplication.class, args);
     }
 
 }
