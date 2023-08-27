@@ -13,6 +13,7 @@ import fun.fengwk.convention4j.common.NullSafe;
 import fun.fengwk.convention4j.common.StringUtils;
 import fun.fengwk.convention4j.common.idgen.NamespaceIdGenerator;
 import fun.fengwk.convention4j.common.page.Pages;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -34,8 +35,8 @@ public class MysqlClientRepository implements ClientRepository {
     private ClientMapper clientMapper;
 
     @Override
-    public long generateId() {
-        return idGenerator.next(getClass());
+    public String generateId() {
+        return String.valueOf(idGenerator.next(getClass()));
     }
 
     @Override
@@ -57,20 +58,20 @@ public class MysqlClientRepository implements ClientRepository {
     }
 
     @Override
-    public boolean removeById(Long id) {
-        if (id == null) {
+    public boolean removeById(String id) {
+        if (!NumberUtils.isCreatable(id)) {
             return false;
         }
-        return clientMapper.updateByIdSelective(
-            ClientDO.forLogicDelete(id)) > 0;
+        ClientDO clientDO = ClientDO.forLogicDelete(NumberUtils.toLong(id));
+        return clientMapper.updateByIdSelective(clientDO) > 0;
     }
 
     @Override
-    public ClientBO getById(Long id) {
-        if (id == null) {
+    public ClientBO getById(String id) {
+        if (!NumberUtils.isCreatable(id)) {
             return null;
         }
-        ClientDO clientDO = clientMapper.findByIdAndDeleted(id, IntBool.FALSE);
+        ClientDO clientDO = clientMapper.findByIdAndDeleted(NumberUtils.toLong(id), IntBool.FALSE);
         return NullSafe.map(clientDO, ClientDO::toBO);
     }
 

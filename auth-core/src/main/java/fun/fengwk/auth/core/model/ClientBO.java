@@ -21,7 +21,7 @@ import java.util.UUID;
 @Data
 public class ClientBO {
 
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private String secret;
@@ -33,7 +33,7 @@ public class ClientBO {
     private Integer refreshTokenExpireSeconds; // 刷新令牌超时，seconds
     private Integer authorizationExpireSeconds; // 授权超时，seconds
 
-    public static ClientBO create(BaseClientPropertiesDTO propertiesDTO, Long id) {
+    public static ClientBO create(BaseClientPropertiesDTO propertiesDTO, String id) {
         ClientBO clientBO = new ClientBO();
         clientBO.setId(id);
         setByPropertiesDTO(clientBO, propertiesDTO);

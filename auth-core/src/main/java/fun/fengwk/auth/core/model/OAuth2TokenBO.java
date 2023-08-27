@@ -16,7 +16,7 @@ import java.util.UUID;
 public class OAuth2TokenBO {
 
     private Long id;
-    private Long clientId;
+    private String clientId;
     private String subjectId;
     private String scope;
     private TokenType tokenType;
@@ -25,7 +25,7 @@ public class OAuth2TokenBO {
     private LocalDateTime lastRefreshTime; // 最后一次刷新的时间
     private LocalDateTime authorizationTime; // 授权的时间
 
-    public static OAuth2TokenBO generate(Long id, Long clientId, String subjectId, String scope) {
+    public static OAuth2TokenBO generate(Long id, String clientId, String subjectId, String scope) {
         OAuth2TokenBO oauth2TokenBO = new OAuth2TokenBO();
         oauth2TokenBO.setId(id);
         oauth2TokenBO.setClientId(clientId);

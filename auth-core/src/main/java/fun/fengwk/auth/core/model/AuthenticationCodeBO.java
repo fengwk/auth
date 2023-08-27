@@ -14,7 +14,7 @@ public class AuthenticationCodeBO {
     private String code;
     private String subjectId;
     private ResponseType responseType;
-    private Long clientId;
+    private String clientId;
     private String redirectUri;
     private String scope;
     private String state;
@@ -22,7 +22,7 @@ public class AuthenticationCodeBO {
     public static AuthenticationCodeBO generate(
         String subjectId,
         ResponseType responseType,
-        Long clientId,
+        String clientId,
         String redirectUri,
         String scope,
         String state) {

@@ -35,7 +35,7 @@ public class ClientRepositoryTest {
     @Test
     public void testGenerateId() {
         int genCount = 100;
-        Set<Long> set = new HashSet<>();
+        Set<String> set = new HashSet<>();
         for (int i = 0; i < genCount; i++) {
             set.add(clientRepository.generateId());
         }

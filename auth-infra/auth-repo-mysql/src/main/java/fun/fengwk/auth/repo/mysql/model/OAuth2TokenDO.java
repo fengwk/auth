@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 public class OAuth2TokenDO extends BaseCacheDO<Long> {
 
-    private Long clientId;
+    private String clientId;
     private String subjectId;
     private String scope;
     private String tokenType;

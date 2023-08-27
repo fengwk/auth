@@ -35,19 +35,19 @@ public class ClientController implements ClientFeignClient {
     }
 
     @Override
-    public Result<Boolean> remove(Long clientId) {
+    public Result<Boolean> remove(String clientId) {
         boolean removed = clientService.remove(clientId);
         return Results.noContent(removed);
     }
 
     @Override
-    public Result<ClientDTO> updateSecret(Long clientId) {
+    public Result<ClientDTO> updateSecret(String clientId) {
         ClientDTO clientDTO = clientService.updateSecret(clientId);
         return Results.ok(clientDTO);
     }
 
     @Override
-    public Result<ClientDTO> get(Long clientId) {
+    public Result<ClientDTO> get(String clientId) {
         ClientDTO client = clientService.get(clientId);
         return Results.ok(client);
     }

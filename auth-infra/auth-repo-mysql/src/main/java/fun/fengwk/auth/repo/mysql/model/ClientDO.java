@@ -9,6 +9,7 @@ import fun.fengwk.convention4j.common.reflect.TypeToken;
 import fun.fengwk.convention4j.springboot.starter.cache.annotation.Key;
 import fun.fengwk.convention4j.springboot.starter.cache.mapper.BaseCacheDO;
 import lombok.Data;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ClientDO extends BaseCacheDO<Long> {
             return null;
         }
         ClientDO clientDO = new ClientDO();
-        clientDO.setId(clientBO.getId());
+        clientDO.setId(NumberUtils.toLong(clientBO.getId()));
         clientDO.setName(clientBO.getName());
         clientDO.setDescription(clientBO.getDescription());
         clientDO.setSecret(clientBO.getSecret());
@@ -59,7 +60,7 @@ public class ClientDO extends BaseCacheDO<Long> {
 
     public ClientBO toBO() {
         ClientBO clientBO = new ClientBO();
-        clientBO.setId(getId());
+        clientBO.setId(String.valueOf(getId()));
         clientBO.setName(getName());
         clientBO.setDescription(getDescription());
         clientBO.setSecret(getSecret());

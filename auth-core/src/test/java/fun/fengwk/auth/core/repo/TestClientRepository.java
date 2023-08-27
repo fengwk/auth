@@ -24,11 +24,11 @@ import java.util.stream.Collectors;
 public class TestClientRepository implements ClientRepository {
 
     private long id;
-    private final Map<Long, ClientBO> map = new HashMap<>();
+    private final Map<String, ClientBO> map = new HashMap<>();
 
     @Override
-    public long generateId() {
-        return ++id;
+    public String generateId() {
+        return String.valueOf(++id);
     }
 
     @Override
@@ -49,12 +49,12 @@ public class TestClientRepository implements ClientRepository {
     }
 
     @Override
-    public boolean removeById(Long id) {
+    public boolean removeById(String id) {
         return map.remove(id) != null;
     }
 
     @Override
-    public ClientBO getById(Long id) {
+    public ClientBO getById(String id) {
         ClientBO clientBO = map.get(id);
         clientBO = GsonUtils.fromJson(GsonUtils.toJson(clientBO), ClientBO.class);
         return clientBO;

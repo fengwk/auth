@@ -20,13 +20,13 @@ public interface ClientFeignClient {
     Result<ClientDTO> update(@RequestBody ClientSaveDTO saveDTO);
 
     @DeleteMapping
-    Result<Boolean> remove(@RequestParam("clientId") Long clientId);
+    Result<Boolean> remove(@RequestParam("clientId") String clientId);
 
     @PatchMapping("/secret")
-    Result<ClientDTO> updateSecret(@RequestParam("clientId") Long clientId);
+    Result<ClientDTO> updateSecret(@RequestParam("clientId") String clientId);
 
     @GetMapping("/{clientId}")
-    Result<ClientDTO> get(@PathVariable("clientId") Long clientId);
+    Result<ClientDTO> get(@PathVariable("clientId") String clientId);
 
     @GetMapping("/page")
     Result<Page<ClientDTO>> page(

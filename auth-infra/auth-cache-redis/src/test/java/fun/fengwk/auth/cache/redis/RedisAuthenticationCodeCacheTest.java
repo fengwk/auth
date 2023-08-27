@@ -24,7 +24,7 @@ public class RedisAuthenticationCodeCacheTest {
     @Test
     public void test() {
         AuthenticationCodeBO authenticationCodeBO = AuthenticationCodeBO.generate(
-                "1", ResponseType.CODE, 1L,
+                "1", ResponseType.CODE, "1",
                 "https://fengwk.fun/hpmepage", "userInfo", "123");
         authenticationCodeCache.set(authenticationCodeBO, 1000);
         AuthenticationCodeBO found = authenticationCodeCache.get(authenticationCodeBO.getCode());

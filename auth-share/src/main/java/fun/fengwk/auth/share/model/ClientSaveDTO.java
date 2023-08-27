@@ -14,6 +14,6 @@ public class ClientSaveDTO extends BaseClientPropertiesDTO {
      * 客户端id，首次创建时无需设值
      */
     @NotNull
-    private Long id;
+    private String id;
 
 }

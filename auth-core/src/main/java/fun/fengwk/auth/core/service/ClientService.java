@@ -76,11 +76,11 @@ public class ClientService {
         return clientBO.toDTO();
     }
 
-    public boolean remove(@NotNull Long clientId) {
+    public boolean remove(@NotNull String clientId) {
         return clientRepository.removeById(clientId);
     }
 
-    public ClientDTO updateSecret(@NotNull Long clientId) {
+    public ClientDTO updateSecret(@NotNull String clientId) {
         ClientBO clientBO = clientRepository.getById(clientId);
         if (clientBO == null) {
             log.warn("client not found, clientId: {}", clientId);
@@ -96,7 +96,7 @@ public class ClientService {
         return clientBO.toDTO();
     }
 
-    public ClientDTO get(Long clientId) {
+    public ClientDTO get(String clientId) {
         ClientBO clientBO = clientRepository.getById(clientId);
         return NullSafe.map(clientBO, ClientBO::toDTO);
     }

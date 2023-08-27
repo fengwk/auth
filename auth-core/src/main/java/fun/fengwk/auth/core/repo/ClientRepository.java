@@ -9,15 +9,15 @@ import fun.fengwk.convention4j.api.page.SortablePageQuery;
  */
 public interface ClientRepository {
 
-    long generateId();
+    String generateId();
 
     boolean add(ClientBO clientBO);
 
     boolean updateById(ClientBO clientBO);
 
-    boolean removeById(Long id);
+    boolean removeById(String id);
 
-    ClientBO getById(Long id);
+    ClientBO getById(String id);
 
     boolean existsByName(String name);
 

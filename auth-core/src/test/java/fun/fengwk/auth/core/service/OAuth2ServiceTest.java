@@ -36,7 +36,7 @@ public class OAuth2ServiceTest {
     @Autowired
     private OAuth2Service oauth2Service;
     private String redirectUri = "https://fengwk.fun/homepage";
-    private Long clientId;
+    private String clientId;
     private String clientSecret;
 
     @Before

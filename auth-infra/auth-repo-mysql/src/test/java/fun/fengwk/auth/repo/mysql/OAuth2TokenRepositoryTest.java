@@ -23,7 +23,7 @@ public class OAuth2TokenRepositoryTest {
     @Test
     public void testCrud() {
         OAuth2TokenBO oauth2TokenBO = OAuth2TokenBO.generate(
-            oauth2TokenRepository.generateId(), 1L, "1", "userinfo");
+            oauth2TokenRepository.generateId(), "1", "1", "userinfo");
 
         assert oauth2TokenRepository.add(oauth2TokenBO);
         OAuth2TokenBO found = oauth2TokenRepository.getByAccessToken(oauth2TokenBO.getAccessToken());

@@ -7,7 +7,7 @@
     <parent>
         <groupId>fun.fengwk.convention4j</groupId>
         <artifactId>convention4j-parent</artifactId>
-        <version>0.0.7</version>
+        <version>0.0.8</version>
     </parent>
 
     <groupId>fun.fengwk.auth</groupId>
@@ -28,7 +28,7 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-        <auth-share-java.version>1.0-SNAPSHOT</auth-share-java.version>
+        <auth.version>1.0-SNAPSHOT</auth.version>
     </properties>
 
     <dependencyManagement>
@@ -36,32 +36,32 @@
             <dependency>
                 <groupId>fun.fengwk.auth</groupId>
                 <artifactId>auth-share</artifactId>
-                <version>${auth-share-java.version}</version>
+                <version>${auth.version}</version>
             </dependency>
             <dependency>
                 <groupId>fun.fengwk.auth</groupId>
                 <artifactId>auth-core</artifactId>
-                <version>${project.version}</version>
+                <version>${auth.version}</version>
             </dependency>
             <dependency>
                 <groupId>fun.fengwk.auth</groupId>
                 <artifactId>auth-infra-parent</artifactId>
-                <version>${project.version}</version>
+                <version>${auth.version}</version>
             </dependency>
             <dependency>
                 <groupId>fun.fengwk.auth</groupId>
                 <artifactId>auth-cache-redis</artifactId>
-                <version>${project.version}</version>
+                <version>${auth.version}</version>
             </dependency>
             <dependency>
                 <groupId>fun.fengwk.auth</groupId>
                 <artifactId>auth-repo-mysql</artifactId>
-                <version>${project.version}</version>
+                <version>${auth.version}</version>
             </dependency>
             <dependency>
                 <groupId>fun.fengwk.auth</groupId>
                 <artifactId>auth-rest</artifactId>
-                <version>${project.version}</version>
+                <version>${auth.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

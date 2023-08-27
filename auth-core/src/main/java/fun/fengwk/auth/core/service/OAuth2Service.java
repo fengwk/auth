@@ -1,10 +1,10 @@
 package fun.fengwk.auth.core.service;
 
 import fun.fengwk.auth.core.facade.AuthenticationFacade;
+import fun.fengwk.auth.core.facade.ClientFacade;
 import fun.fengwk.auth.core.manager.AuthenticationManager;
 import fun.fengwk.auth.core.model.ClientBO;
 import fun.fengwk.auth.core.model.OAuth2TokenBO;
-import fun.fengwk.auth.core.repo.ClientRepository;
 import fun.fengwk.auth.core.repo.OAuth2TokenRepository;
 import fun.fengwk.auth.core.service.oauth2.AuthenticationCodeMode;
 import fun.fengwk.auth.core.service.oauth2.ClientCredentialsMode;
@@ -44,7 +44,7 @@ public class OAuth2Service {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientFacade clientFacade;
     @Autowired
     private OAuth2TokenRepository oauth2TokenRepository;
 
@@ -60,10 +60,8 @@ public class OAuth2Service {
             log.warn("invalid client id, responseType: {}, clientId: {}", responseType, clientId);
             throw AuthErrorCodes.INVALID_CLIENT_ID.asThrowable();
         }
-        long cid = NumberUtils.toLong(clientId);
-
         // 客户端信息检查
-        ClientBO clientBO = clientRepository.getById(cid);
+        ClientBO clientBO = clientFacade.getByClientId(clientId);
         if (clientBO == null) {
             log.warn("client not found, responseType: {}, clientId: {}", responseType, clientId);
             throw AuthErrorCodes.CLIENT_NOT_FOUND.asThrowable();
@@ -103,10 +101,9 @@ public class OAuth2Service {
             log.warn("invalid client id, grantType: {}, clientId: {}", grantType, clientId);
             throw AuthErrorCodes.INVALID_CLIENT_ID.asThrowable();
         }
-        long cid = NumberUtils.toLong(clientId);
 
         // 客户端信息检查
-        ClientBO client = clientRepository.getById(cid);
+        ClientBO client = clientFacade.getByClientId(clientId);
         if (client == null) {
             log.warn("client not found, grantType: {}, clientId: {}", grantType, clientId);
             throw AuthErrorCodes.CLIENT_NOT_FOUND.asThrowable();
@@ -143,7 +140,7 @@ public class OAuth2Service {
             throw AuthErrorCodes.ACCESS_TOKEN_ERROR.asThrowable();
         }
 
-        ClientBO client = clientRepository.getById(oauth2TokenBO.getClientId());
+        ClientBO client = clientFacade.getByClientId(oauth2TokenBO.getClientId());
         if (client == null) {
             log.warn("client not found, accessToken: {}, clientId: {}",
                 accessToken, oauth2TokenBO.getClientId());
